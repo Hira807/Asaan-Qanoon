@@ -1,0 +1,256 @@
+/* ==========================================================================
+   BROWSE PAGE CATEGORIES MODULAR IMPLEMENTATION
+   ========================================================================== */
+
+/* Page Hero Section Typography Layout */
+.browse-hero-header {
+    padding: 60px 0 24px 0;
+    background-color: #FFFFFF;
+}
+
+.top-meta-alignment-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.hero-left-editorial {
+    flex: 1;
+    max-width: 680px;
+}
+
+.uppercase-tracker-small {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: #8A8A8A;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.browse-main-heading {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    letter-spacing: -0.6px;
+    margin-bottom: 12px;
+}
+
+.browse-subheading-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #666666;
+}
+
+.category-aggregate-badge {
+    font-size: 12px;
+    font-weight: 500;
+    color: #8A8A8A;
+    white-space: nowrap;
+    padding-bottom: 4px;
+}
+
+/* Rounded Integrated Input Search Component Box */
+.search-bar-wrapper {
+    padding: 16px 0 40px 0;
+    background-color: #FFFFFF;
+}
+
+.search-form-panel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.search-input-field-group {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: #F5F5F5;
+    border: 1px solid #E5E5E5;
+    border-radius: 24px;
+    padding: 0 20px;
+    height: 48px;
+}
+
+.lookup-icon {
+    font-size: 14px;
+    color: #8A8A8A;
+    margin-right: 12px;
+}
+
+.main-search-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    color: #222222;
+    outline: none;
+}
+
+.main-search-input::placeholder {
+    color: #8A8A8A;
+}
+
+.btn-search-action {
+    font-family: inherit;
+    background-color: #111111;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 24px;
+    padding: 0 28px;
+    height: 48px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.btn-search-action:hover {
+    opacity: 0.9;
+}
+
+/* Custom 3-Column Layout Overrides for Row Cleanliness */
+.categories-directory-block {
+    padding: 0 0 80px 0;
+    background-color: #FFFFFF;
+}
+
+.grid-three-columns-fixed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Category Directory Item Block Styling */
+.category-directory-card {
+    border: 1px solid #E5E5E5;
+    border-radius: 12px;
+    padding: 24px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    min-height: 194px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.category-directory-card:hover {
+    border-color: #8A8A8A;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.card-meta-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-icon-avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #FAFAFA;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222222;
+    font-size: 14px;
+}
+
+.card-laws-counter-tag {
+    font-size: 12px;
+    color: #8A8A8A;
+    font-weight: 400;
+}
+
+.card-main-editorial {
+    flex: 1;
+    margin-bottom: 16px;
+}
+
+.card-category-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 6px;
+}
+
+.card-category-summary {
+    font-size: 13px;
+    line-height: 1.45;
+    color: #666666;
+}
+
+.card-action-trigger-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666666;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    transition: color 0.15s ease;
+}
+
+.category-directory-card:hover .card-action-trigger-link {
+    color: #000000;
+    font-weight: 600;
+}
+
+.macro-arrow {
+    font-size: 11px;
+}
+
+/* Footnote System Separation Rules */
+.margin-top-limit {
+    margin-top: 20px;
+}
+
+.base-horizontal-separator {
+    border: none;
+    height: 1px;
+    background-color: #E5E5E5;
+    max-width: var(--ui-max-width);
+    margin: 0 auto;
+}
+
+.minimal-footer-system {
+    padding: 32px 0;
+    background-color: #FFFFFF;
+}
+
+.base-meta-row-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-identity-minimal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.minimal-footer-emblem {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.minimal-footer-brand-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111111;
+}
+
+.footer-copyright-text {
+    font-size: 12px;
+    color: #8A8A8A;
+}

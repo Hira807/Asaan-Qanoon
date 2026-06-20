@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Browse Law Categories - Asaan Qanoon</title>
+    <!-- Stylesheet connections -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="browse-laws.css">
+    <script src="browse-laws.js"></script>
+    
+    <!-- Precise Inter typography configuration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Kit for visual UI icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="ui-container nav-flex-row">
+            <div class="brand-identity">
+                <img src="logo.png" alt="Asaan Qanoon Logo" class="brand-logo-img" style="width: 50px; height: 40px;">
+                <span class="brand-title">Asaan Qanoon</span>
+            </div>
+            <nav class="navigation-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="ask-question.html" class="nav-link">Ask a Question</a>
+                <a href="browse-laws.html" class="nav-link active">Browse Laws</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+            <div class="header-action">
+                <a href="ask-question.html" class="btn-black-small">Get Legal Help</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title Header and Summary Segment -->
+    <section class="browse-hero-header">
+        <div class="ui-container top-meta-alignment-row">
+            <div class="hero-left-editorial">
+                <span class="uppercase-tracker-small">Browse Laws</span>
+                <h1 class="browse-main-heading">Law Categories</h1>
+                <p class="browse-subheading-text">Select a category to explore applicable laws, or describe your problem directly to get an instant AI-powered match.</p>
+            </div>
+            <!-- Dynamic count updated to reflect your 3 core categories from BrowsebyCategoryDesktop.jpg -->
+            <div class="category-aggregate-badge">
+                100+ laws across 3 categories
+            </div>
+        </div>
+    </section>
+
+    <!-- Unified Search Component Bar -->
+    <section class="search-bar-wrapper">
+        <div class="ui-container">
+            <div class="search-form-panel">
+                <div class="search-input-field-group">
+                    <i class="fa-solid fa-magnifying-glass lookup-icon"></i>
+                    <input type="text" class="main-search-input" placeholder="Search law categories or topics...">
+                </div>
+                <button class="btn-search-action">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Directories Grid Workspace (Streamlined to 3 Items) -->
+    <main class="categories-directory-block">
+        <div class="ui-container">
+            <div class="grid-three-columns-fixed">
+                
+                <!-- Category Card 1: Family Law -->
+                <div class="category-directory-card">
+                    <div class="card-meta-top-row">
+                        <div class="card-icon-avatar">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <span class="card-laws-counter-tag">38 laws</span>
+                    </div>
+                    <div class="card-main-editorial">
+                        <h3 class="card-category-title">Family Law</h3>
+                        <p class="card-category-summary">Marriage, divorce, custody, inheritance</p>
+                    </div>
+                    <a href="ask-question.html" class="card-action-trigger-link">
+                        View laws <i class="fa-solid fa-arrow-right-long macro-arrow"></i>
+                    </a>
+                </div>
+
+                <!-- Category Card 2: Property Law -->
+                <div class="category-directory-card">
+                    <div class="card-meta-top-row">
+                        <div class="card-icon-avatar">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </div>
+                        <span class="card-laws-counter-tag">24 laws</span>
+                    </div>
+                    <div class="card-main-editorial">
+                        <h3 class="card-category-title">Property & Tenancy</h3>
+                        <p class="card-category-summary">Ownership, rent, land disputes</p>
+                    </div>
+                    <a href="ask-question.html" class="card-action-trigger-link">
+                        View laws <i class="fa-solid fa-arrow-right-long macro-arrow"></i>
+                    </a>
+                </div>
+
+                <!-- Category Card 3: Criminal Law -->
+                <div class="category-directory-card">
+                    <div class="card-meta-top-row">
+                        <div class="card-icon-avatar">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <span class="card-laws-counter-tag">45 laws</span>
+                    </div>
+                    <div class="card-main-editorial">
+                        <h3 class="card-category-title">Criminal Law</h3>
+                        <p class="card-category-summary">FIR, bail, criminal offences</p>
+                    </div>
+                    <a href="ask-question.html" class="card-action-trigger-link">
+                        View laws <i class="fa-solid fa-arrow-right-long macro-arrow"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Simple Baseline Separator -->
+    <hr class="base-horizontal-separator margin-top-limit">
+
+    <!-- Footnote Base Line Row Layout -->
+    <footer class="minimal-footer-system">
+        <div class="ui-container base-meta-row-layout">
+            <div class="brand-identity-minimal">
+                <img src="logo.png" alt="Asaan Qanoon Logo" class="brand-logo-img" style="width: 50px; height: 40px;">
+                <span class="minimal-footer-brand-text">Asaan Qanoon</span>
+            </div>
+            <span class="footer-copyright-text">© 2026 Asaan Qanoon. Educational use only. Not legal advice.</span>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Asaan Qanoon</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <script src="Home.js"></script>
+    
+    <!-- Exact Inter Google Font configuration for crisp typography match -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Kit for visual UI icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="ui-container nav-flex-row">
+            <div class="brand-identity">
+                <img src="logo.png" alt="Asaan Qanoon Logo" class="brand-logo-img" style="width: 50px; height: 40px;">
+                <span class="brand-title">Asaan Qanoon</span>
+            </div>
+            <nav class="navigation-menu">
+                <a href="Home.html" class="nav-link active">Home</a>
+                <a href="ask-question.html" class="nav-link">Ask a Question</a>
+                <a href="browse-laws.html" class="nav-link">Browse Laws</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+            <div class="header-action">
+                <a href="ask-question.html" class="btn-black-small">Get Legal Help</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Hero Workspace -->
+    <main class="hero-block">
+        <div class="ui-container hero-grid-split">
+            
+            <!-- Left Narrative Column -->
+            <div class="hero-narrative">
+                <div class="coverage-pill">
+                    <span class="live-indicator-dot"></span>
+                    Currently covering Family, Property & Criminal Law
+                </div>
+                <h1 class="hero-main-title">Pakistani Law,<br>Explained Simply.</h1>
+                <p class="hero-subtitle-p">
+                    Asaan Qanoon is an AI-powered legal assistant that answers your questions in plain language — no fees, no appointments, no jargon.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="ask-question.html" class="btn-black-large">Ask a Question <i class="fa-solid fa-arrow-right icon-gap"></i></a>
+                    <a href="browse-laws.html" class="btn-outline-large">Browse Law Categories</a>
+                </div>
+            </div>
+
+            <!-- Right Interactive Assistant Widget Column -->
+            <div class="hero-widget-frame">
+                <div class="assistant-chat-box">
+                    <div class="chat-bar-header">
+                        <div class="chat-header-identity">
+                            <div class="chat-avatar-wrapper">
+                                <img src="image_f93d09.png" alt="Assistant Emblem" class="chat-emblem">
+                            </div>
+                            <span class="chat-header-label">Asaan Qanoon Assistant</span>
+                        </div>
+                        <i class="fa-solid fa-minus chat-minimize-trigger"></i>
+                    </div>
+                    <div class="chat-message-area">
+                        <div class="msg-bubble user-bubble">
+                            How do I file for divorce in Pakistan?
+                        </div>
+                        <div class="msg-bubble assistant-bubble">
+                            Under the Muslim Family Laws Ordinance, 1961, a wife can file for Khula through the Family Court. You will need to... <a href="#" class="inline-read-more">read more</a>
+                        </div>
+                    </div>
+                    <div class="chat-input-bar">
+                        <input type="text" class="chat-input-box" placeholder="Ask your legal question...">
+                        <button class="chat-submit-btn">
+                            <i class="fa-solid fa-paper-plane"></i> Ask
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Numerical Metrics Bar Segment -->
+    <section class="metrics-strip">
+        <div class="ui-container metrics-flex-row">
+            <div class="metric-item">
+                <h2 class="metric-value">10,000+</h2>
+                <p class="metric-tag">Questions Answered</p>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+                <h2 class="metric-value">3</h2>
+                <p class="metric-tag">Law Categories Covered</p>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+                <h2 class="metric-value">98%</h2>
+                <p class="metric-tag">Satisfaction Rate</p>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+                <h2 class="metric-value">Free</h2>
+                <p class="metric-tag">Always & Forever</p>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metrics-paragraph-block">
+                Trusted by citizens, students, and community workers across Pakistan to understand their legal rights.
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Categorized Directory Areas -->
+    <section class="directory-section">
+        <div class="ui-container">
+            <div class="directory-top-flex">
+                <div>
+                    <span class="uppercase-tracker">Browse by category</span>
+                    <h2 class="directory-main-title">Three Areas of Pakistani Law</h2>
+                </div>
+                <a href="#" class="directory-view-all-link">View all questions <i class="fa-solid fa-arrow-right dynamic-arrow"></i></a>
+            </div>
+
+            <div class="grid-three-columns">
+                <!-- Law Cluster Card: Family -->
+                <div class="law-directory-card">
+                    <div class="card-icon-container-dark">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="card-law-title">Family Law</h3>
+                    <p class="card-law-summary">
+                        Understand your rights in marriage, divorce, child custody, and inheritance under Pakistani family law.
+                    </p>
+                    <div class="card-tag-cloud">
+                        <span class="micro-pill-tag">Marriage</span>
+                        <span class="micro-pill-tag">Divorce</span>
+                        <span class="micro-pill-tag">Child Custody</span>
+                        <span class="micro-pill-tag">Inheritance</span>
+                    </div>
+                    <a href="ask-question.html" class="card-action-anchor">Browse questions <i class="fa-solid fa-arrow-right static-arrow"></i></a>
+                </div>
+
+                <!-- Law Cluster Card: Property -->
+                <div class="law-directory-card">
+                    <div class="card-icon-container-dark">
+                        <i class="fa-solid fa-house"></i>
+                    </div>
+                    <h3 class="card-law-title">Property Law</h3>
+                    <p class="card-law-summary">
+                        Navigate property transfers, sale deeds, mortgages, lease agreements, and tenancy disputes.
+                    </p>
+                    <div class="card-tag-cloud">
+                        <span class="micro-pill-tag">Property Transfer</span>
+                        <span class="micro-pill-tag">Sale Deed</span>
+                        <span class="micro-pill-tag">Mortgage</span>
+                        <span class="micro-pill-tag">Tenancy Disputes</span>
+                    </div>
+                    <a href="ask-question.html" class="card-action-anchor">Browse questions <i class="fa-solid fa-arrow-right static-arrow"></i></a>
+                </div>
+
+                <!-- Law Cluster Card: Criminal -->
+                <div class="law-directory-card">
+                    <div class="card-icon-container-dark">
+                        <i class="fa-solid fa-gavel"></i>
+                    </div>
+                    <h3 class="card-law-title">Criminal Law</h3>
+                    <p class="card-law-summary">
+                        Learn about criminal offenses, arrest procedures, bail, and court processes under the Pakistan Penal Code.
+                    </p>
+                    <div class="card-tag-cloud">
+                        <span class="micro-pill-tag">Criminal Offenses</span>
+                        <span class="micro-pill-tag">Arrest Procedure</span>
+                        <span class="micro-pill-tag">Bail</span>
+                        <span class="micro-pill-tag">Court Process</span>
+                    </div>
+                    <a href="ask-question.html" class="card-action-anchor">Browse questions <i class="fa-solid fa-arrow-right static-arrow"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structural Grey Steps Section -->
+    <section class="steps-shaded-block">
+        <div class="ui-container">
+            <div class="steps-heading-centered">
+                <span class="uppercase-tracker">How it works</span>
+                <h2 class="directory-main-title">Get answers in three steps</h2>
+            </div>
+            <div class="grid-three-columns unique-step-gapping">
+                
+                <!-- Unit Step 1 -->
+                <div class="step-card-item">
+                    <div class="step-oversized-num">01</div>
+                    <div class="step-icon-box-black">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h4 class="step-card-header">Choose a Category</h4>
+                    <p class="step-card-text">Select from Family, Property, or Criminal Law — the three areas currently covered by Asaan Qanoon.</p>
+                </div>
+
+                <!-- Unit Step 2 -->
+                <div class="step-card-item">
+                    <div class="step-oversized-num">02</div>
+                    <div class="step-icon-box-black">
+                        <i class="fa-solid fa-comment-dots"></i>
+                    </div>
+                    <h4 class="step-card-header">Ask Your Question</h4>
+                    <p class="step-card-text">Type your question in plain Urdu or English. No legal jargon required — ask as you would a trusted friend.</p>
+                </div>
+
+                <!-- Unit Step 3 -->
+                <div class="step-card-item">
+                    <div class="step-oversized-num">03</div>
+                    <div class="step-icon-box-black">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h4 class="step-card-header">Get a Clear Answer</h4>
+                    <p class="step-card-text">Receive a plain-language explanation of the relevant law, your rights, and suggested next steps.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Matrix Block Area -->
+    <section class="faq-matrix-block">
+        <div class="ui-container faq-grid-split">
+            <div class="faq-left-editorial">
+                <span class="uppercase-tracker">FAQ</span>
+                <h2 class="directory-main-title spacer-fix">Common Questions</h2>
+                <p class="faq-intro-para">Have more questions? Ask our AI assistant directly.</p>
+                <a href="ask-question.html" class="card-action-anchor">Ask a question <i class="fa-solid fa-arrow-right static-arrow"></i></a>
+            </div>
+            
+            <div class="faq-right-accordion-stack">
+                <!-- Row Item 1 (Active Mode) -->
+                <div class="accordion-panel active-open">
+                    <div class="accordion-header-row">
+                        <span class="accordion-question">Is Asaan Qanoon a replacement for a lawyer?</span>
+                        <i class="fa-solid fa-chevron-down accordion-indicator"></i>
+                    </div>
+                    <div class="accordion-body-content">
+                        <p>No. Asaan Qanoon provides general legal information to help you understand the law. For advice on your specific case, always consult a qualified lawyer.</p>
+                    </div>
+                </div>
+
+                <!-- Row Item 2 -->
+                <div class="accordion-panel">
+                    <div class="accordion-header-row">
+                        <span class="accordion-question">Which laws does Asaan Qanoon cover?</span>
+                        <i class="fa-solid fa-chevron-down accordion-indicator"></i>
+                    </div>
+                    <div class="accordion-body-content">
+                        <p>Currently covering Family Law, Property Law, and Criminal Law under Pakistani jurisdiction. More categories may be added in future.</p>
+                    </div>
+                </div>
+
+                <!-- Row Item 3 -->
+                <div class="accordion-panel">
+                    <div class="accordion-header-row">
+                        <span class="accordion-question">Is the service available in Urdu?</span>
+                        <i class="fa-solid fa-chevron-down accordion-indicator"></i>
+                    </div>
+                    <div class="accordion-body-content">
+                        <p>Yes. You can ask questions in both Urdu and English, and answers are provided in the same language.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlighted Deep Carbon Pre-Footer Banner -->
+    <section class="highlight-banner-wrapper">
+        <div class="ui-container">
+            <div class="carbon-cta-panel">
+                <div class="carbon-text-area">
+                    <h3 class="carbon-title-text">Have a legal question?</h3>
+                    <p class="carbon-description-text">Get plain-language answers right now — free, fast, and available in Urdu and English. Currently covering Family, Property & Criminal Law.</p>
+                </div>
+                <a href="ask-question.html" class="btn-white-solid-large">Ask Asaan Qanoon <i class="fa-solid fa-arrow-right custom-spacer-arrow"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer System -->
+    <footer class="system-footer-root">
+        <div class="ui-container footer-columns-layout">
+            <div class="footer-corporate-cell">
+                <div class="brand-identity footer-margin-tweak">
+                    <img src="logo.png" alt="Asaan Qanoon Logo" class="brand-logo-img" style="width: 50px; height: 40px;">
+                    <span class="brand-title">Asaan Qanoon</span>
+                </div>
+                <p class="footer-tagline-statement">Making Pakistani law accessible to everyone.</p>
+            </div>
+            <div class="footer-navigation-cell">
+                <h5 class="footer-header-label">Law Categories</h5>
+                <a href="#" class="footer-nav-anchor">Family Law</a>
+                <a href="#" class="footer-nav-anchor">Property Law</a>
+                <a href="#" class="footer-nav-anchor">Criminal Law</a>
+            </div>
+            <div class="footer-navigation-cell">
+                <h5 class="footer-header-label">Platform</h5>
+                <a href="#" class="footer-nav-anchor">Ask a Question</a>
+                <a href="#" class="footer-nav-anchor">Browse Laws</a>
+                <a href="#" class="footer-nav-anchor">About</a>
+            </div>
+            <div class="footer-navigation-cell">
+                <h5 class="footer-header-label">Legal</h5>
+                <a href="#" class="footer-nav-anchor">Disclaimer</a>
+                <a href="#" class="footer-nav-anchor">Privacy Policy</a>
+                <a href="#" class="footer-nav-anchor">Terms of Use</a>
+            </div>
+        </div>
+        <div class="ui-container footer-horizontal-line"></div>
+        <div class="ui-container footer-base-meta-row">
+            <span>© 2026 Asaan Qanoon</span>
+            <span>Currently covering Family, Property & Criminal Law</span>
+        </div>
+    </footer>
+
+</body>
+</html>

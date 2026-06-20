@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Ask a Legal Question - Asaan Qanoon</title>
+    <!-- External stylesheet links -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ask-question.css">
+    
+    
+    <!-- Precise Inter typography configuration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Kit for interface iconography -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header">
+        <div class="ui-container nav-flex-row">
+            <div class="brand-identity">
+                <img src="logo.png" alt="Asaan Qanoon Logo" class="brand-logo-img" style="width: 50px; height: 40px;">
+                <span class="brand-title">Asaan Qanoon</span>
+            </div>
+            <nav class="navigation-menu">
+                <a href="Home.html" class="nav-link">Home</a>
+                <a href="ask-question.html" class="nav-link active">Ask a Question</a>
+                <a href="browse-laws.html" class="nav-link">Browse Laws</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+            <div class="header-action">
+                <a href="ask-question.html" class="btn-black-small">Get Legal Help</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Introduction Header Section -->
+    <section class="page-intro-hero">
+        <div class="ui-container">
+            <span class="uppercase-tracker-small">AI Legal Assistant</span>
+            <h1 class="page-main-heading">Ask a Legal Question</h1>
+            <p class="page-subheading-text">Get plain-language answers to your legal questions — no jargon, no fees.</p>
+        </div>
+    </section>
+
+    <!-- Main Dynamic Interface Layout Split -->
+    <main class="workspace-layout-block">
+        <div class="ui-container main-split-grid">
+            
+            <!-- Left Workspace Column: Forms & Lists -->
+            <div class="workspace-primary-col">
+                
+                <!-- Informational Warning Banner Component -->
+                <div class="info-alert-banner">
+                    <i class="fa-solid fa-circle-info alert-icon"></i>
+                    <p class="alert-banner-text">This AI currently covers Family, Property, and Criminal Law only.</p>
+                </div>
+
+                <!-- Category Filtering Controls -->
+                <div class="filter-controls-row">
+                    <span class="filter-label">Filter by:</span>
+                    <div class="filter-pill-group">
+                        <button class="filter-pill active">All Categories</button>
+                        <button class="filter-pill">Family Law</button>
+                        <button class="filter-pill">Property Law</button>
+                        <button class="filter-pill">Criminal Law</button>
+                    </div>
+                </div>
+
+                <!-- Main Legal Search/Query Input Card -->
+                <div class="search-input-container-card">
+                    <div class="textarea-input-row">
+                        <textarea class="query-textarea" placeholder="e.g. How do I file for divorce in Pakistan?"></textarea>
+                    </div>
+                    <div class="interactive-toolbar-row">
+                        <div class="toolbar-selectors-left">
+                            <button class="toolbar-dropdown-btn">
+                                <i class="fa-solid fa-tag dropdown-icon-left"></i> Select Category
+                            </button>
+                            <button class="toolbar-dropdown-btn">
+                                <i class="fa-solid fa-earth-americas dropdown-icon-left"></i> English <i class="fa-solid fa-chevron-down dropdown-icon-right"></i>
+                            </button>
+                        </div>
+                        <button class="btn-submit-query">
+                            <i class="fa-solid fa-paper-plane submit-plane-icon"></i> Ask Question
+                        </button>
+                    </div>
+                </div>
+                <p class="input-disclaimer-subtext">Currently covering Family, Property & Criminal Law • Answers are informational, not legal advice.</p>
+
+                <!-- Structural Rule Divider -->
+                <hr class="section-divider">
+
+                <!-- Recent Questions List Section -->
+                <div class="recent-questions-wrapper">
+                    <h2 class="section-block-title">Recent Questions</h2>
+                    <div class="questions-stack">
+                        
+                        <!-- Question Item 1 -->
+                        <div class="question-row-card">
+                            <div class="question-title-block">
+                                <i class="fa-regular fa-comment question-bubble-icon"></i>
+                                <span class="question-string">What is the procedure for registering a property transfer in Pakistan?</span>
+                            </div>
+                            <span class="law-category-tag">Property Law</span>
+                        </div>
+
+                        <!-- Question Item 2 -->
+                        <div class="question-row-card">
+                            <div class="question-title-block">
+                                <i class="fa-regular fa-comment question-bubble-icon"></i>
+                                <span class="question-string">Can a wife claim mehr after divorce under Pakistani law?</span>
+                            </div>
+                            <span class="law-category-tag">Family Law</span>
+                        </div>
+
+                        <!-- Question Item 3 -->
+                        <div class="question-row-card">
+                            <div class="question-title-block">
+                                <i class="fa-regular fa-comment question-bubble-icon"></i>
+                                <span class="question-string">What are my rights if arrested without a warrant?</span>
+                            </div>
+                            <span class="law-category-tag">Criminal Law</span>
+                        </div>
+
+                        <!-- Question Item 4 -->
+                        <div class="question-row-card">
+                            <div class="question-title-block">
+                                <i class="fa-regular fa-comment question-bubble-icon"></i>
+                                <span class="question-string">How is child custody decided in a Pakistani court?</span>
+                            </div>
+                            <span class="law-category-tag">Family Law</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Workspace Column: Sidebar Directory Utilities -->
+            <aside class="workspace-sidebar-col">
+                
+                <!-- Sidebar Widget Card 1: Coverage Scope -->
+                <div class="sidebar-widget-card">
+                    <div class="widget-header">
+                        <i class="fa-solid fa-shield-halved widget-header-icon"></i>
+                        <h3 class="widget-heading-title">Coverage Scope</h3>
+                    </div>
+                    <p class="widget-intro-paragraph">Asaan Qanoon currently covers three areas of Pakistani law. More categories may be added in future.</p>
+                    
+                    <ul class="coverage-details-list">
+                        <li class="coverage-list-item">
+                            <div class="item-icon-frame"><i class="fa-solid fa-heart"></i></div>
+                            <div class="item-text-frame">
+                                <h4 class="coverage-item-title">Family Law</h4>
+                                <p class="coverage-item-desc">Marriage, divorce, custody, inheritance</p>
+                            </div>
+                        </li>
+                        <li class="coverage-list-item">
+                            <div class="item-icon-frame"><i class="fa-solid fa-house"></i></div>
+                            <div class="item-text-frame">
+                                <h4 class="coverage-item-title">Property Law</h4>
+                                <p class="coverage-item-desc">Transfer, sale, mortgage, tenancy</p>
+                            </div>
+                        </li>
+                        <li class="coverage-list-item">
+                            <div class="item-icon-frame"><i class="fa-solid fa-gavel"></i></div>
+                            <div class="item-text-frame">
+                                <h4 class="coverage-item-title">Criminal Law</h4>
+                                <p class="coverage-item-desc">Offenses, arrest, court process (PPC)</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sidebar Widget Card 2: Popular Topics Tag Matrix -->
+                <div class="sidebar-widget-card">
+                    <div class="widget-header">
+                        <i class="fa-solid fa-chart-line widget-header-icon"></i>
+                        <h3 class="widget-heading-title">Popular Topics</h3>
+                    </div>
+                    <div class="topics-flex-cloud">
+                        <a href="#" class="topic-tag-link">Divorce procedure</a>
+                        <a href="#" class="topic-tag-link">Property sale deed</a>
+                        <a href="#" class="topic-tag-link">Bail application</a>
+                        <a href="#" class="topic-tag-link">Inheritance rights</a>
+                        <a href="#" class="topic-tag-link">Tenancy disputes</a>
+                        <a href="#" class="topic-tag-link">FIR filing</a>
+                        <a href="#" class="topic-tag-link">Child custody</a>
+                        <a href="#" class="topic-tag-link">Mortgage rules</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Secondary Inline Disclaimer Context -->
+                <div class="sidebar-meta-disclaimer">
+                    <i class="fa-solid fa-shield sidebar-shield-icon"></i>
+                    <p class="meta-disclaimer-text">Answers are for general information only. Consult a qualified lawyer for advice on your specific situation.</p>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- System Footer -->
+    <footer class="system-footer-root simple-border-top">
+        <div class="ui-container footer-base-meta-row">
+            <span class="footer-meta-copyright">© 2024 Asaan Qanoon — Making Pakistani law accessible</span>
+            <span class="footer-meta-scope">Currently covering Family, Property & Criminal Law</span>
+        </div>
+    </footer>
+<script src="ask-question.js?v=2"></script>
+</body>
+</html>
