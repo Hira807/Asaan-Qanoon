@@ -111,13 +111,8 @@ Answer:"""
         return jsonify({"answer": "Sorry, could not generate answer. Please try again."}), 200
 
 
-# =====================================================================
-# NEW (EXHIBITION DEMO): Islamic guidance, curated references, no RAG
-# Exhibition ke baad hatane ke liye: yeh poora section delete kar do.
-# =====================================================================
 
-# Har "text" tanzil.net se KHUD verify karke paste karo (translation wording copy-paste).
-# Jab tak "PASTE VERIFIED TRANSLATION HERE" likha hai, woh entry bot ko nahi dikhegi.
+
 ISLAMIC_REFERENCES = [
     {"ref": "Quran 4:11-12",   "area": "Wirasat / Inheritance (Property, Family)", "text": "PASTE VERIFIED TRANSLATION HERE"},
     {"ref": "Quran 4:4",       "area": "Haq mehr (Family)",                         "text": "PASTE VERIFIED TRANSLATION HERE"},
