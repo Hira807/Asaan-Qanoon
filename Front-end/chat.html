@@ -1,104 +1,394 @@
-import sys
-import os
-import json
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-import chromadb
-from google import genai
-from google.genai import types
-from groq import Groq
-app = Flask(__name__)
-CORS(app)
-print("Loading law_data.json...")
-with open("law_data.json", "r") as f:
-    embedded_data = json.load(f)
-print("Building vector database...")
-db_client = chromadb.Client()
-collection = db_client.get_or_create_collection(
-    name="pakistan_law",
-    metadata={"hnsw:space": "cosine"}
-)
-BATCH_SIZE = 100
-for i in range(0, len(embedded_data), BATCH_SIZE):
-    batch = embedded_data[i:i+BATCH_SIZE]
-    collection.add(
-        documents=[x["response"] for x in batch],
-        embeddings=[x["embedding"] for x in batch],
-        metadatas=[{"question": x["question"]} for x in batch],
-        ids=[x["id"] for x in batch]
-    )
-print(f"Database ready with {collection.count()} entries.")
-# Gemini for embeddings only
-gemini_key = os.environ.get("GEMINI_API_KEY")
-gemini_client = genai.Client(api_key=gemini_key)
-# Groq for text generation
-groq_key = os.environ.get("GROQ_API_KEY")
-groq_client = Groq(api_key=groq_key)
-def get_query_embedding(text):
-    result = gemini_client.models.embed_content(
-        model="gemini-embedding-001",
-        contents=[text],
-        config=types.EmbedContentConfig(
-            task_type="RETRIEVAL_QUERY",
-            output_dimensionality=256
-        )
-    )
-    return [round(v, 6) for v in result.embeddings[0].values]
-@app.route("/ask", methods=["POST"])
-def ask():
-    data = request.get_json()
-    question = data.get("question", "").strip()
-    if not question:
-        return jsonify({"error": "No question provided"}), 400
-    try:
-        # Translate using Groq
-        translation_response = groq_client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[{
-                "role": "user",
-                "content": f"""Translate the following question to English.
-If already in English, repeat it exactly.
-Output only the translated question, nothing else.
-Question: {question}"""
-            }]
-        )
-        search_query = translation_response.choices[0].message.content.strip()
-    except Exception as e:
-        print(f"Translation error: {e}")
-        search_query = question
-    try:
-        query_embedding = get_query_embedding(search_query)
-        results = collection.query(
-            query_embeddings=[query_embedding],
-            n_results=3
-        )
-        context = "\n\n".join(results["documents"][0])
-    except Exception as e:
-        print(f"Embedding error: {e}")
-        return jsonify({"answer": "Sorry, could not process your question. Please try again."}), 200
-    try:
-        # Generate answer using Groq
-        answer_response = groq_client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[{
-                "role": "user",
-                "content": f"""You are a helpful legal assistant for Pakistani law (Family, Criminal, and Property law).
-Answer using ONLY the legal context below.
-Reply in the SAME language the user used: Urdu script → Urdu, Roman Urdu → Roman Urdu, English → English.
-If the context does not answer the question, say so honestly.
-Legal context:
-{context}
-User question: {question}
-Answer:"""
-            }]
-        )
-        return jsonify({"answer": answer_response.choices[0].message.content})
-    except Exception as e:
-        print(f"Generation error: {e}")
-        return jsonify({"answer": "Sorry, could not generate answer. Please try again."}), 200
-@app.route("/health", methods=["GET"])
-def health():
-    return jsonify({"status": "ok", "entries": collection.count()})
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asaan Qanoon - Islamic Legal Guidance</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#666666',
+                            light: '#f0f0f0',
+                            footer: '#e5e5e5',
+                            text: '#4a4a4a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Scrollbar for Chat Area */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .chat-bubble {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typing Animation */
+        .typing-indicator span {
+            animation: blink 1.4s infinite both;
+            height: 6px;
+            width: 6px;
+            background-color: #666666;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+        }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes blink {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            20% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.2; transform: scale(0.8); }
+        }
+
+        
+.site-header {
+    width: 100%;
+    border-bottom: 1px solid var(--hex-border-line);
+    background-color: #FFFFFF;
+}
+
+.nav-flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+}
+
+.brand-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+/* Exact logo layout rules mapping your file image_f93d09.png */
+.brand-logo-img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.brand-logo-img.monochromatic-filter {
+    filter: brightness(0);
+}
+
+.brand-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--hex-charcoal-dark);
+    letter-spacing: -0.3px;
+}
+
+.navigation-menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-left: 40px;
+}
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--hex-grey-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+    color: var(--hex-black-pure);
+}
+
+.nav-link.active {
+    color: var(--hex-black-pure);
+    font-weight: 600;
+}
+
+.btn-black-small {
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: var(--hex-black-pure);
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.btn-black-small:hover {
+    opacity: 0.9;
+    </style>
+</head>
+<body class="bg-white h-screen flex flex-col font-sans text-gray-800 overflow-hidden antialiased">
+
+    <header class="site-header">
+        <div class="ui-container nav-flex-row">
+            <div class="brand-identity">
+                <img src="logo.png" alt="Asaan Qanoon Logo" class="brand-logo-img" style="width: 50px; height: 40px;">
+                <span class="brand-title">Asaan Qanoon</span>
+            </div>
+            <nav class="navigation-menu">
+                <a href="Home.html" class="nav-link active">Home</a>
+                <a href="ask-question.html" class="nav-link">Ask a Question</a>
+                <a href="browse-laws.html" class="nav-link">Browse Laws</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+            <div class="header-action">
+                <a href="chat.html" class="btn-black-small">Islamic Guidence</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header Section -->
+    <header class="bg-brand-light px-6 lg:px-12 py-6 shrink-0 border-b border-gray-200">
+        <h1 class="text-2xl md:text-3xl font-bold text-brand-dark mb-2">Get Islamic Guidance</h1>
+        <p class="text-gray-500 text-sm md:text-base max-w-4xl leading-relaxed">
+            Your trusted assistant for exploring Islamic jurisprudence (Fiqah). Get Preliminary guidance on matter related 
+            <strong class="text-gray-600">Family, Criminal</strong> and <strong class="text-gray-600">Property</strong> law based on Islamic scholarly traditions.
+        </p>
+    </header>
+
+    <!-- Main Content (Two Columns) -->
+    <div class="flex flex-1 overflow-hidden">
+        
+        <!-- Left Sidebar -->
+        <aside class="w-1/3 lg:w-[300px] bg-black flex flex-col text-white shrink-0 hidden md:flex">
+            <div class="pt-8 px-6 pb-4">
+                <div class="text-xs font-semibold tracking-wider text-gray-400 uppercase flex items-center whitespace-nowrap">
+                    LEGAL CATEGORIES
+                    <div class="h-px bg-gray-700 flex-1 ml-3"></div>
+                </div>
+            </div>
+            
+            <div class="flex-1 flex flex-col">
+                <button onclick="setCategory('Family Law')" class="flex items-center gap-4 px-8 py-8 border-b border-gray-800 hover:bg-gray-900 transition group text-left">
+                    <i class="fa-solid fa-users text-2xl lg:text-3xl text-gray-300 group-hover:text-white transition"></i>
+                    <span class="text-xl lg:text-2xl font-semibold">Family Law</span>
+                </button>
+                
+                <button onclick="setCategory('Criminal Law')" class="flex items-center gap-4 px-8 py-8 border-b border-gray-800 hover:bg-gray-900 transition group text-left">
+                    <i class="fa-solid fa-gavel text-2xl lg:text-3xl text-gray-300 group-hover:text-white transition"></i>
+                    <span class="text-xl lg:text-2xl font-semibold">Criminal Law</span>
+                </button>
+                
+                <button onclick="setCategory('Property Law')" class="flex items-center gap-4 px-8 py-8 border-b border-gray-800 hover:bg-gray-900 transition group text-left">
+                    <i class="fa-solid fa-house-chimney-user text-2xl lg:text-3xl text-gray-300 group-hover:text-white transition"></i>
+                    <span class="text-xl lg:text-2xl font-semibold">Property Law</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Right Chat Area -->
+        <main class="flex-1 bg-white flex flex-col relative w-full">
+            
+            <!-- Messages Container -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
+                <!-- Welcome/Empty State Message -->
+                <div class="flex flex-col items-center justify-center h-full text-center text-gray-400 space-y-4" id="empty-state">
+                    <i class="fa-solid fa-scale-balanced text-4xl mb-2 text-gray-300"></i>
+                    <p class="max-w-md">Select a category from the left or type your query below to begin your consultation.</p>
+                </div>
+            </div>
+
+            <!-- Typing Indicator (Hidden by default) -->
+            <div id="typing-indicator" class="hidden px-8 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-dark">
+                        <i class="fa-solid fa-robot text-sm"></i>
+                    </div>
+                    <div class="bg-brand-light rounded-lg rounded-tl-none px-4 py-3">
+                        <div class="typing-indicator flex items-center">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Field Area -->
+            <div class="p-6 bg-white w-full max-w-4xl mx-auto shrink-0">
+                <form id="chat-form" class="bg-brand-light rounded-md flex items-center px-4 py-3 border border-gray-300 focus-within:border-brand-dark focus-within:ring-1 focus-within:ring-brand-dark transition-all">
+                    <i class="fa-solid fa-circle-question text-gray-600 mr-3 text-lg"></i>
+                    <input 
+                        type="text" 
+                        id="user-input" 
+                        class="flex-1 bg-transparent border-none outline-none text-gray-800 placeholder-gray-500 text-sm md:text-base w-full" 
+                        placeholder="Describe your legal Query........"
+                        autocomplete="off"
+                    >
+                    <button type="submit" id="send-btn" class="text-gray-600 hover:text-black ml-2 px-2 transition">
+                        <i class="fa-regular fa-paper-plane text-xl"></i>
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-brand-footer px-6 py-3 text-center text-[11px] md:text-xs text-gray-500 shrink-0 border-t border-gray-300">
+        <h4>Note: This AI provide educational guidance based on general Fiqah principles. It does not issue Fatwas (legal verdicts and should not replace advice from a qualified Islamic scholar or legal counsel).</h4>
+    </footer>
+
+    <script>
+        const chatForm = document.getElementById('chat-form');
+        const userInput = document.getElementById('user-input');
+        const chatMessages = document.getElementById('chat-messages');
+        const emptyState = document.getElementById('empty-state');
+        const typingIndicator = document.getElementById('typing-indicator');
+
+        let currentContext = "General Islamic Law";
+
+        function setCategory(category) {
+            currentContext = category;
+            userInput.value = `Can you explain the basic principles of ${category} in Islamic law?`;
+            userInput.focus();
+        }
+
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            // Clear input and remove empty state
+            userInput.value = '';
+            if (emptyState) emptyState.style.display = 'none';
+
+            // Append User Message
+            appendMessage('user', text);
+            
+            // Show typing indicator
+            typingIndicator.classList.remove('hidden');
+            scrollToBottom();
+
+            // Direct call to your Python Flask Backend
+            await callPythonBackend(text);
+        });
+
+        async function callPythonBackend(userText) {
+            try {
+                // Aapke Python app.py ka route
+                const response = await fetch('http://127.0.0.1:5000/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: userText })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                // Hide typing animation
+                typingIndicator.classList.add('hidden');
+
+                if (data.answer) {
+                    appendMessage('ai', data.answer);
+                } else if (data.error) {
+                    appendMessage('error', data.error);
+                }
+                
+            } catch (error) {
+                console.error("Error connecting to backend:", error);
+                typingIndicator.classList.add('hidden');
+                appendMessage('error', "System se connect nahi ho pa raha. Make sure aapka Python server (app.py) run ho raha hai aur usme CORS enabled hai.");
+            }
+        }
+
+        function appendMessage(sender, text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `flex w-full chat-bubble ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            
+            let bubbleContent = '';
+
+            if (sender === 'user') {
+                bubbleContent = `
+                    <div class="bg-brand-dark text-white rounded-lg rounded-tr-none px-5 py-3 max-w-[80%] shadow-sm">
+                        <p class="text-[14px] leading-[1.5]">${escapeHTML(text)}</p>
+                    </div>
+                `;
+            } else if (sender === 'ai') {
+                // Simple markdown formatting for bold and newlines
+                let formattedText = escapeHTML(text)
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n/g, '<br>');
+
+                bubbleContent = `
+                    <div class="flex gap-3 max-w-[85%]">
+                        <div class="w-8 h-8 rounded-full bg-brand-light border border-gray-200 flex-shrink-0 flex items-center justify-center text-brand-dark shadow-sm">
+                            <i class="fa-solid fa-robot text-xs"></i>
+                        </div>
+                        <div class="bg-brand-light text-[#333333] rounded-lg rounded-tl-none px-5 py-4 shadow-sm border border-gray-100">
+                            <div class="text-[14px] leading-[1.5] space-y-2">
+                                ${formattedText}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Error message
+                bubbleContent = `
+                    <div class="bg-red-50 text-red-600 rounded-lg px-5 py-3 text-sm max-w-[80%] border border-red-100">
+                        <i class="fa-solid fa-circle-exclamation mr-2"></i> ${escapeHTML(text)}
+                    </div>
+                `;
+            }
+
+            msgDiv.innerHTML = bubbleContent;
+            chatMessages.appendChild(msgDiv);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+    </script>
+</body>
+</html>
+
+
+
