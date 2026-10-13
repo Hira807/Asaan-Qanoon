@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <title>Asaan Qanoon - Islamic Legal Guidance</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,10 +20,10 @@
                     },
                     colors: {
                         brand: {
-                            dark: '#666666',
-                            light: '#f0f0f0',
-                            footer: '#e5e5e5',
-                            text: '#4a4a4a'
+                            dark: '#0B2545',
+                            light: '#F8F9FA',
+                            accent: '#C9A15A',
+                            green: '#0A3A2C'
                         }
                     }
                 }
@@ -30,36 +32,19 @@
     </script>
     
     <style>
-        /* Custom Scrollbar for Chat Area */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+        /* Global smooth scrolling for entire page */
+        html { scroll-behavior: smooth; }
 
-        .chat-bubble {
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-
+        .chat-bubble { animation: fadeIn 0.3s ease-out forwards; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Typing Animation */
         .typing-indicator span {
             animation: blink 1.4s infinite both;
-            height: 6px;
-            width: 6px;
-            background-color: #666666;
+            height: 6px; width: 6px;
+            background-color: #0B2545;
             border-radius: 50%;
             display: inline-block;
             margin: 0 2px;
@@ -73,193 +58,134 @@
             100% { opacity: 0.2; transform: scale(0.8); }
         }
 
-        
-.site-header {
-    width: 100%;
-    border-bottom: 1px solid var(--hex-border-line);
-    background-color: #FFFFFF;
-}
-
-.nav-flex-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 72px;
-}
-
-.brand-identity {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-}
-
-/* Exact logo layout rules mapping your file image_f93d09.png */
-.brand-logo-img {
-    width: 26px;
-    height: 26px;
-    object-fit: contain;
-}
-
-.brand-logo-img.monochromatic-filter {
-    filter: brightness(0);
-}
-
-.brand-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--hex-charcoal-dark);
-    letter-spacing: -0.3px;
-}
-
-.navigation-menu {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    margin-left: 40px;
-}
-
-.nav-link {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--hex-grey-muted);
-    text-decoration: none;
-    transition: color 0.15s ease;
-}
-
-.nav-link:hover {
-    color: var(--hex-black-pure);
-}
-
-.nav-link.active {
-    color: var(--hex-black-pure);
-    font-weight: 600;
-}
-
-.btn-black-small {
-    font-size: 13px;
-    font-weight: 600;
-    color: #FFFFFF;
-    background-color: var(--hex-black-pure);
-    padding: 10px 18px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-}
-
-.btn-black-small:hover {
-    opacity: 0.9;
+        .site-header {
+            width: 100%;
+            border-bottom: 1px solid #E5E5E5;
+            background-color: #0A3A2C;
+        }
+        .nav-flex-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .brand-identity { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .brand-title { font-size: 18px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.3px; }
+        .navigation-menu { display: flex; align-items: center; gap: 32px; }
+        .nav-link { font-size: 14px; font-weight: 500; color: #E2E8F0; text-decoration: none; transition: color 0.15s ease; }
+        .nav-link:hover, .nav-link.active { color: #C9A15A; font-weight: 600; }
+        .btn-gold { font-size: 13px; font-weight: 600; color: #0A3A2C; background-color: #C9A15A; padding: 10px 18px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s ease; }
+        .btn-gold:hover { opacity: 0.9; }
     </style>
 </head>
-<body class="bg-white h-screen flex flex-col font-sans text-gray-800 overflow-hidden antialiased">
+<body class="bg-gray-50 min-h-screen flex flex-col font-sans text-gray-800 antialiased">
 
+    <!-- Top Navigation -->
     <header class="site-header">
-        <div class="ui-container nav-flex-row">
+        <div class="nav-flex-row">
             <div class="brand-identity">
-                <img src="logo.png" alt="Asaan Qanoon Logo" class="brand-logo-img" style="width: 50px; height: 40px;">
+                <img src="logo.png" alt="Asaan Qanoon Logo" style="width: 45px; height: 35px; object-fit: contain;">
                 <span class="brand-title">Asaan Qanoon</span>
             </div>
             <nav class="navigation-menu">
-                <a href="Home.html" class="nav-link active">Home</a>
+                <a href="Home.html" class="nav-link">Home</a>
                 <a href="ask-question.html" class="nav-link">Ask a Question</a>
                 <a href="browse-laws.html" class="nav-link">Browse Laws</a>
                 <a href="about.html" class="nav-link">About</a>
             </nav>
             <div class="header-action">
-                <a href="chat.html" class="btn-black-small">Islamic Guidence</a>
+                <a href="chat.html" class="btn-gold">Islamic Guidance</a>
             </div>
         </div>
     </header>
 
-    <!-- Header Section -->
-    <header class="bg-brand-light px-6 lg:px-12 py-6 shrink-0 border-b border-gray-200">
-        <h1 class="text-2xl md:text-3xl font-bold text-brand-dark mb-2">Get Islamic Guidance</h1>
-        <p class="text-gray-500 text-sm md:text-base max-w-4xl leading-relaxed">
-            Your trusted assistant for exploring Islamic jurisprudence (Fiqah). Get Preliminary guidance on matter related 
-            <strong class="text-gray-600">Family, Criminal</strong> and <strong class="text-gray-600">Property</strong> law based on Islamic scholarly traditions.
-        </p>
-    </header>
+    <!-- Full-Width Authentic Ayat Banner -->
+    <section class="bg-brand-green text-white py-6 px-4 shadow-md shrink-0 border-b border-yellow-600/30">
+        <div class="max-w-6xl mx-auto text-center space-y-2">
+            <h3 class="text-2xl md:text-3xl font-serif text-yellow-400 tracking-wide leading-relaxed" dir="rtl">
+            يَا أَيُّهَا الَّذِينَ آمَنُوا كُونُوا قَوَّامِينَ بِالْقِسْطِ شُهَدَاءَ لِلَّهِ وَلَوْ عَلَى أَنْفُسِكُمْ أَوِ الْوَالِدَيْنِ وَالْأَقْرَبِينَ إِنْ يَكُونْ غَنِيًّا أَوْ فَقِيرًا فَاللَّهُ أَوْلَى بِهِما فَلَا تَتَّبِعُوا الْهَوَى أَنْ تَعْدِلُوا وَإِنْ تَلْوُوا أَوْ تُعْرِضُوا فَإِنَّ اللَّهَ كَانَ بِمَا تَعْمَلُونَ خَبِيرًا
+            </h3>
+            <p class="text-xs md:text-sm text-gray-200 max-w-2xl mx-auto font-light">
+                "O believers! Stand firm for justice as witnesses for Allah even if it is against yourselves, your parents, or close relatives.Be they rich or poor, Allah is best to ensure their interests. So do not let your desires cause you to deviate 'from justice'.If you distort the testimony or refuse to give it, then 'know that' Allah is certainly All-Aware of what you do." 
+            </p>
+            <div class="inline-block border-t border-yellow-500/50 pt-1 mt-1">
+                <span class="text-[11px] text-yellow-400 font-semibold tracking-wider uppercase">Surah An-Nisa 4:135</span>
+            </div>
+        </div>
+    </section>
 
-    <!-- Main Content (Two Columns) -->
-    <div class="flex flex-1 overflow-hidden">
-        
-        <!-- Left Sidebar -->
-        <aside class="w-1/3 lg:w-[300px] bg-black flex flex-col text-white shrink-0 hidden md:flex">
-            <div class="pt-8 px-6 pb-4">
-                <div class="text-xs font-semibold tracking-wider text-gray-400 uppercase flex items-center whitespace-nowrap">
-                    LEGAL CATEGORIES
-                    <div class="h-px bg-gray-700 flex-1 ml-3"></div>
-                </div>
-            </div>
-            
-            <div class="flex-1 flex flex-col">
-                <button onclick="setCategory('Family Law')" class="flex items-center gap-4 px-8 py-8 border-b border-gray-800 hover:bg-gray-900 transition group text-left">
-                    <i class="fa-solid fa-users text-2xl lg:text-3xl text-gray-300 group-hover:text-white transition"></i>
-                    <span class="text-xl lg:text-2xl font-semibold">Family Law</span>
-                </button>
-                
-                <button onclick="setCategory('Criminal Law')" class="flex items-center gap-4 px-8 py-8 border-b border-gray-800 hover:bg-gray-900 transition group text-left">
-                    <i class="fa-solid fa-gavel text-2xl lg:text-3xl text-gray-300 group-hover:text-white transition"></i>
-                    <span class="text-xl lg:text-2xl font-semibold">Criminal Law</span>
-                </button>
-                
-                <button onclick="setCategory('Property Law')" class="flex items-center gap-4 px-8 py-8 border-b border-gray-800 hover:bg-gray-900 transition group text-left">
-                    <i class="fa-solid fa-house-chimney-user text-2xl lg:text-3xl text-gray-300 group-hover:text-white transition"></i>
-                    <span class="text-xl lg:text-2xl font-semibold">Property Law</span>
-                </button>
-            </div>
-        </aside>
-
-        <!-- Right Chat Area -->
-        <main class="flex-1 bg-white flex flex-col relative w-full">
-            
-            <!-- Messages Container -->
-            <div id="chat-messages" class="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
-                <!-- Welcome/Empty State Message -->
-                <div class="flex flex-col items-center justify-center h-full text-center text-gray-400 space-y-4" id="empty-state">
-                    <i class="fa-solid fa-scale-balanced text-4xl mb-2 text-gray-300"></i>
-                    <p class="max-w-md">Select a category from the left or type your query below to begin your consultation.</p>
-                </div>
-            </div>
-
-            <!-- Typing Indicator (Hidden by default) -->
-            <div id="typing-indicator" class="hidden px-8 pb-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-dark">
-                        <i class="fa-solid fa-robot text-sm"></i>
-                    </div>
-                    <div class="bg-brand-light rounded-lg rounded-tl-none px-4 py-3">
-                        <div class="typing-indicator flex items-center">
-                            <span></span><span></span><span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Input Field Area -->
-            <div class="p-6 bg-white w-full max-w-4xl mx-auto shrink-0">
-                <form id="chat-form" class="bg-brand-light rounded-md flex items-center px-4 py-3 border border-gray-300 focus-within:border-brand-dark focus-within:ring-1 focus-within:ring-brand-dark transition-all">
-                    <i class="fa-solid fa-circle-question text-gray-600 mr-3 text-lg"></i>
-                    <input 
-                        type="text" 
-                        id="user-input" 
-                        class="flex-1 bg-transparent border-none outline-none text-gray-800 placeholder-gray-500 text-sm md:text-base w-full" 
-                        placeholder="Describe your legal Query........"
-                        autocomplete="off"
-                    >
-                    <button type="submit" id="send-btn" class="text-gray-600 hover:text-black ml-2 px-2 transition">
-                        <i class="fa-regular fa-paper-plane text-xl"></i>
-                    </button>
-                </form>
-            </div>
-        </main>
+    <!-- Horizontal Category Bar (White Background) -->
+    <div class="bg-white border-b border-gray-200 py-3 px-6 shrink-0 shadow-sm">
+        <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-4 md:gap-8">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Select Legal Category:</span>
+            <button onclick="setCategory('Family Law')" class="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 hover:border-brand-dark hover:bg-gray-50 transition text-sm font-semibold text-gray-700">
+                <i class="fa-solid fa-users text-brand-accent"></i> Family Law
+            </button>
+            <button onclick="setCategory('Criminal Law')" class="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 hover:border-brand-dark hover:bg-gray-50 transition text-sm font-semibold text-gray-700">
+                <i class="fa-solid fa-gavel text-brand-accent"></i> Criminal Law
+            </button>
+            <button onclick="setCategory('Property Law')" class="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 hover:border-brand-dark hover:bg-gray-50 transition text-sm font-semibold text-gray-700">
+                <i class="fa-solid fa-house-chimney-user text-brand-accent"></i> Property Law
+            </button>
+        </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-brand-footer px-6 py-3 text-center text-[11px] md:text-xs text-gray-500 shrink-0 border-t border-gray-300">
-        <h4>Note: This AI provide educational guidance based on general Fiqah principles. It does not issue Fatwas (legal verdicts and should not replace advice from a qualified Islamic scholar or legal counsel).</h4>
+    <!-- Main Spacious Chat Interface Container -->
+    <main class="flex-1 max-w-5xl w-full mx-auto bg-white flex flex-col shadow-sm my-4 rounded-xl border border-gray-200">
+        
+        <!-- Messages Area (Fixed height scrollable area) -->
+        <div id="chat-messages" class="h-[450px] md:h-[520px] overflow-y-auto p-6 md:p-8 space-y-6">
+            <!-- Initial Greeting State -->
+            <div class="flex flex-col items-center justify-center h-full text-center text-gray-400 space-y-3" id="empty-state">
+                <div class="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center text-brand-green mb-1 shadow-inner">
+                    <i class="fa-solid fa-scale-balanced text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-700">Welcome to Islamic Legal Consultation</h3>
+                <p class="max-w-md text-sm">Select a category above or type your query below to receive preliminary guidance based on verified Fiqh traditions.</p>
+            </div>
+        </div>
+
+        <!-- Typing Indicator -->
+        <div id="typing-indicator" class="hidden px-8 pb-3">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-brand-green">
+                    <i class="fa-solid fa-robot text-xs"></i>
+                </div>
+                <div class="bg-gray-100 rounded-lg rounded-tl-none px-4 py-3">
+                    <div class="typing-indicator flex items-center">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Query Bar -->
+        <div class="p-4 md:p-6 bg-gray-50 border-t border-gray-200 shrink-0">
+            <form id="chat-form" class="bg-white rounded-lg flex items-center px-4 py-3 border border-gray-300 focus-within:border-brand-green focus-within:ring-2 focus-within:ring-brand-green/20 transition-all shadow-sm">
+                <i class="fa-solid fa-circle-question text-gray-400 mr-3 text-lg"></i>
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    class="flex-1 bg-transparent border-none outline-none text-gray-800 placeholder-gray-400 text-sm md:text-base" 
+                    placeholder="Ask about Family, Property, or Criminal matters in Islamic law..."
+                    autocomplete="off"
+                >
+                <button type="submit" id="send-btn" class="bg-brand-green text-white hover:bg-emerald-900 ml-3 px-4 py-2 rounded-md transition text-sm font-semibold flex items-center gap-2">
+                    <span>Ask</span> <i class="fa-regular fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer Notice -->
+    <footer class="bg-gray-100 px-6 py-3 text-center text-[11px] md:text-xs text-gray-500 shrink-0 border-t border-gray-200">
+        <p><strong>Notice:</strong> This AI provides educational guidance based on general Fiqh principles. It does not issue formal Fatwas or replace advice from a qualified Islamic scholar or legal counsel.</p>
     </footer>
 
+    <!-- Chat Interaction Script -->
     <script>
         const chatForm = document.getElementById('chat-form');
         const userInput = document.getElementById('user-input');
@@ -267,10 +193,7 @@
         const emptyState = document.getElementById('empty-state');
         const typingIndicator = document.getElementById('typing-indicator');
 
-        let currentContext = "General Islamic Law";
-
         function setCategory(category) {
-            currentContext = category;
             userInput.value = `Can you explain the basic principles of ${category} in Islamic law?`;
             userInput.focus();
         }
@@ -280,37 +203,27 @@
             const text = userInput.value.trim();
             if (!text) return;
 
-            // Clear input and remove empty state
             userInput.value = '';
             if (emptyState) emptyState.style.display = 'none';
 
-            // Append User Message
             appendMessage('user', text);
-            
-            // Show typing indicator
             typingIndicator.classList.remove('hidden');
             scrollToBottom();
 
-            // Direct call to your Python Flask Backend
-            await callPythonBackend(text);
+            await callBackend(text);
         });
 
-        async function callPythonBackend(userText) {
+        async function callBackend(userText) {
             try {
-                // Aapke Python app.py ka route
-                const response = await fetch('http://127.0.0.1:5000/ask', {
+                const response = await fetch('https://asaan-qanoon-back-end-1.onrender.com/api/islamic-lite', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ question: userText })
                 });
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
                 const data = await response.json();
-                
-                // Hide typing animation
                 typingIndicator.classList.add('hidden');
 
                 if (data.answer) {
@@ -318,11 +231,10 @@
                 } else if (data.error) {
                     appendMessage('error', data.error);
                 }
-                
             } catch (error) {
-                console.error("Error connecting to backend:", error);
+                console.error("Connection error:", error);
                 typingIndicator.classList.add('hidden');
-                appendMessage('error', "System se connect nahi ho pa raha. Make sure aapka Python server (app.py) run ho raha hai aur usme CORS enabled hai.");
+                appendMessage('error', "Unable to reach server. Please check your internet connection.");
             }
         }
 
@@ -331,15 +243,13 @@
             msgDiv.className = `flex w-full chat-bubble ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
             
             let bubbleContent = '';
-
             if (sender === 'user') {
                 bubbleContent = `
-                    <div class="bg-brand-dark text-white rounded-lg rounded-tr-none px-5 py-3 max-w-[80%] shadow-sm">
+                    <div class="bg-brand-green text-white rounded-lg rounded-tr-none px-5 py-3 max-w-[80%] shadow-sm">
                         <p class="text-[14px] leading-[1.5]">${escapeHTML(text)}</p>
                     </div>
                 `;
             } else if (sender === 'ai') {
-                // Simple markdown formatting for bold and newlines
                 let formattedText = escapeHTML(text)
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                     .replace(/\*(.*?)\*/g, '<em>$1</em>')
@@ -347,18 +257,17 @@
 
                 bubbleContent = `
                     <div class="flex gap-3 max-w-[85%]">
-                        <div class="w-8 h-8 rounded-full bg-brand-light border border-gray-200 flex-shrink-0 flex items-center justify-center text-brand-dark shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 border border-emerald-200 flex-shrink-0 flex items-center justify-center text-brand-green shadow-sm">
                             <i class="fa-solid fa-robot text-xs"></i>
                         </div>
-                        <div class="bg-brand-light text-[#333333] rounded-lg rounded-tl-none px-5 py-4 shadow-sm border border-gray-100">
-                            <div class="text-[14px] leading-[1.5] space-y-2">
+                        <div class="bg-gray-50 text-gray-800 rounded-lg rounded-tl-none px-5 py-4 shadow-sm border border-gray-200">
+                            <div class="text-[14px] leading-[1.6] space-y-2">
                                 ${formattedText}
                             </div>
                         </div>
                     </div>
                 `;
             } else {
-                // Error message
                 bubbleContent = `
                     <div class="bg-red-50 text-red-600 rounded-lg px-5 py-3 text-sm max-w-[80%] border border-red-100">
                         <i class="fa-solid fa-circle-exclamation mr-2"></i> ${escapeHTML(text)}
@@ -377,18 +286,9 @@
 
         function escapeHTML(str) {
             return str.replace(/[&<>'"]/g, 
-                tag => ({
-                    '&': '&amp;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    "'": '&#39;',
-                    '"': '&quot;'
-                }[tag] || tag)
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
             );
         }
     </script>
 </body>
 </html>
-
-
-
