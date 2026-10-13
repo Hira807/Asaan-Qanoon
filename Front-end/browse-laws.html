@@ -8,7 +8,7 @@
     <!-- Stylesheet connections -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="browse-laws.css">
-    <script src="browse-laws.js"></script>
+    <script src="browse-laws.js" defer></script>
     
     <!-- Precise Inter typography configuration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,33 +21,31 @@
 <body>
 
     <!-- Main Navigation Header -->
-    <header class="site-header">
-        <div class="ui-container nav-flex-row">
-            <div class="brand-identity">
-                <img src="logo.png" alt="Asaan Qanoon Logo" class="brand-logo-img" style="width: 50px; height: 40px;">
-                <span class="brand-title">Asaan Qanoon</span>
+    <header class="site-header" style="background-color: var(--primary-green); display: flex; justify-content: space-between; align-items: center; padding: 16px 48px; color: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <div class="brand-identity">
+                <img src="logo.png" alt="Asaan Qanoon Logo" style="width: 45px; height: 35px; object-fit: contain;">
+                <span class="brand-title" style="color:#ffffff">Asaan Qanoon</span>
             </div>
-            <nav class="navigation-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="ask-question.html" class="nav-link">Ask a Question</a>
-                <a href="browse-laws.html" class="nav-link active">Browse Laws</a>
-                <a href="about.html" class="nav-link">About</a>
-            </nav>
-            <div class="header-action">
-                <a href="chat.html" class="btn-black-small">Get Islamic Guidance</a>
-            </div>
+        </div>
+        <nav class="navigation-menu" style="display: flex; align-items: center; gap: 32px;">
+            <a href="Home.html" class="nav-link" style="color: #d1d5db; text-decoration: none; font-size: 0.95rem;">Home</a>
+            <a href="ask-question.html" class="nav-link" style="color: #d1d5db; text-decoration: none; font-size: 0.95rem;">Ask a Question</a>
+            <a href="browse-laws.html" class="nav-link active" style="color: #ffffff; text-decoration: none; font-size: 0.95rem; font-weight: 500;">Browse Laws</a>
+            <a href="about.html" class="nav-link" style="color: #d1d5db; text-decoration: none; font-size: 0.95rem;">About</a>
+        </nav>
+        <div class="header-action">
+            <a href="chat.html" class="nav-btn" style="background-color: var(--accent-gold); color: var(--primary-dark); padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Islamic Guidance</a>
         </div>
     </header>
 
     <!-- Page Title Header and Summary Segment -->
     <section class="browse-hero-header">
-        <div class="ui-container top-meta-alignment-row">
+        <div class="top-meta-alignment-row">
             <div class="hero-left-editorial">
                 <span class="uppercase-tracker-small">Browse Laws</span>
                 <h1 class="browse-main-heading">Law Categories</h1>
                 <p class="browse-subheading-text">Select a category to explore applicable laws, or describe your problem directly to get an instant AI-powered match.</p>
             </div>
-            <!-- Dynamic count updated to reflect your 3 core categories from BrowsebyCategoryDesktop.jpg -->
             <div class="category-aggregate-badge">
                 100+ laws across 3 categories
             </div>
@@ -56,7 +54,7 @@
 
     <!-- Unified Search Component Bar -->
     <section class="search-bar-wrapper">
-        <div class="ui-container">
+        <div class="ui-container" style="max-width: 1280px; margin: 0 auto;">
             <div class="search-form-panel">
                 <div class="search-input-field-group">
                     <i class="fa-solid fa-magnifying-glass lookup-icon"></i>
@@ -67,9 +65,9 @@
         </div>
     </section>
 
-    <!-- Category Directories Grid Workspace (Streamlined to 3 Items) -->
+    <!-- Category Directories Grid Workspace -->
     <main class="categories-directory-block">
-        <div class="ui-container">
+        <div class="ui-container" style="max-width: 1280px; margin: 0 auto;">
             <div class="grid-three-columns-fixed">
                 
                 <!-- Category Card 1: Family Law -->
@@ -132,9 +130,9 @@
 
     <!-- Footnote Base Line Row Layout -->
     <footer class="minimal-footer-system">
-        <div class="ui-container base-meta-row-layout">
+        <div class="ui-container base-meta-row-layout" style="max-width: 1280px; margin: 0 auto;">
             <div class="brand-identity-minimal">
-                <img src="logo.png" alt="Asaan Qanoon Logo" class="brand-logo-img" style="width: 50px; height: 40px;">
+                <img src="logo.png" alt="Asaan Qanoon Logo" class="minimal-footer-emblem" style="width: 30px; height: 24px; object-fit: contain;">
                 <span class="minimal-footer-brand-text">Asaan Qanoon</span>
             </div>
             <span class="footer-copyright-text">© 2026 Asaan Qanoon. Educational use only. Not legal advice.</span>
