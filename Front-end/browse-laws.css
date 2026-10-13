@@ -1,11 +1,36 @@
 /* ==========================================================================
-   BROWSE PAGE CATEGORIES MODULAR IMPLEMENTATION
+   ASAAN QANOON - BROWSE LAWS THEME STYLESHEET
    ========================================================================== */
 
-/* Page Hero Section Typography Layout */
+:root {
+    --primary-dark: #0f3428;
+    --primary-green: #13382b;
+    --accent-gold: #c5a059;
+    --accent-gold-hover: #b38f48;
+    --light-bg: #fdfbf7;
+    --card-bg: #ffffff;
+    --text-main: #111827;
+    --text-muted: #4b5563;
+    --border-color: #e5e7eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* Page Hero Header */
 .browse-hero-header {
     padding: 60px 0 24px 0;
-    background-color: #FFFFFF;
+    background-color: var(--light-bg);
 }
 
 .top-meta-alignment-row {
@@ -13,6 +38,9 @@
     justify-content: space-between;
     align-items: flex-end;
     gap: 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
 }
 
 .hero-left-editorial {
@@ -25,37 +53,46 @@
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 0.8px;
-    color: #8A8A8A;
+    color: var(--accent-gold);
     display: block;
     margin-bottom: 8px;
 }
 
 .browse-main-heading {
-    font-size: 32px;
+    font-size: 3rem;
     font-weight: 700;
-    color: #000000;
+    color: var(--primary-green);
     letter-spacing: -0.6px;
     margin-bottom: 12px;
 }
 
 .browse-subheading-text {
-    font-size: 14px;
-    line-height: 1.55;
-    color: #666666;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-muted);
 }
 
 .category-aggregate-badge {
-    font-size: 12px;
+    font-size: 0.9rem;
     font-weight: 500;
-    color: #8A8A8A;
+    color: var(--primary-dark);
+    background-color: rgba(197, 160, 89, 0.15);
+    padding: 6px 14px;
+    border-radius: 20px;
     white-space: nowrap;
-    padding-bottom: 4px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
 }
 
-/* Rounded Integrated Input Search Component Box */
+/* Search Bar Wrapper & Input Component */
 .search-bar-wrapper {
     padding: 16px 0 40px 0;
-    background-color: #FFFFFF;
+    background-color: var(--light-bg);
+}
+
+.search-bar-wrapper .ui-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
 }
 
 .search-form-panel {
@@ -69,16 +106,22 @@
     flex: 1;
     display: flex;
     align-items: center;
-    background-color: #F5F5F5;
-    border: 1px solid #E5E5E5;
-    border-radius: 24px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     padding: 0 20px;
-    height: 48px;
+    height: 50px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: border-color 0.2s ease;
+}
+
+.search-input-field-group:focus-within {
+    border-color: var(--primary-green);
 }
 
 .lookup-icon {
     font-size: 14px;
-    color: #8A8A8A;
+    color: #9ca3af;
     margin-right: 12px;
 }
 
@@ -87,60 +130,69 @@
     background: transparent;
     border: none;
     font-family: inherit;
-    font-size: 14px;
-    color: #222222;
+    font-size: 0.95rem;
+    color: var(--text-main);
     outline: none;
 }
 
 .main-search-input::placeholder {
-    color: #8A8A8A;
+    color: #9ca3af;
 }
 
 .btn-search-action {
     font-family: inherit;
-    background-color: #111111;
+    background-color: var(--primary-green);
     color: #FFFFFF;
     border: none;
-    border-radius: 24px;
+    border-radius: 8px;
     padding: 0 28px;
-    height: 48px;
-    font-size: 14px;
+    height: 50px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.15s ease;
+    box-shadow: 0 4px 12px rgba(19, 56, 43, 0.15);
+    transition: background-color 0.2s ease;
 }
 
 .btn-search-action:hover {
-    opacity: 0.9;
+    background-color: #1a4d3c;
 }
 
-/* Custom 3-Column Layout Overrides for Row Cleanliness */
+/* Categories Directory Grid Workspace */
 .categories-directory-block {
     padding: 0 0 80px 0;
-    background-color: #FFFFFF;
+    background-color: var(--light-bg);
+}
+
+.categories-directory-block .ui-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
 }
 
 .grid-three-columns-fixed {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 24px;
 }
 
-/* Category Directory Item Block Styling */
+/* Category Directory Card Styling */
 .category-directory-card {
-    border: 1px solid #E5E5E5;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 24px;
-    background-color: #FFFFFF;
+    padding: 28px;
+    background-color: var(--card-bg);
     display: flex;
     flex-direction: column;
-    min-height: 194px;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    min-height: 210px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .category-directory-card:hover {
-    border-color: #8A8A8A;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.02);
+    transform: translateY(-3px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 10px 25px rgba(19, 56, 43, 0.08);
 }
 
 .card-meta-top-row {
@@ -151,22 +203,25 @@
 }
 
 .card-icon-avatar {
-    width: 36px;
-    height: 36px;
-    background-color: #FAFAFA;
-    border: 1px solid #E5E5E5;
+    width: 40px;
+    height: 40px;
+    background-color: #f0fdf4;
+    border: 1px solid #dcfce7;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #222222;
-    font-size: 14px;
+    color: var(--primary-green);
+    font-size: 15px;
 }
 
 .card-laws-counter-tag {
-    font-size: 12px;
-    color: #8A8A8A;
-    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--primary-green);
+    background-color: #f0fdf4;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
 }
 
 .card-main-editorial {
@@ -175,32 +230,32 @@
 }
 
 .card-category-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #111111;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-green);
     margin-bottom: 6px;
 }
 
 .card-category-summary {
-    font-size: 13px;
-    line-height: 1.45;
-    color: #666666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-muted);
 }
 
 .card-action-trigger-link {
-    font-size: 13px;
+    font-size: 0.88rem;
     font-weight: 500;
-    color: #666666;
+    color: var(--primary-green);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 6px;
     margin-top: auto;
-    transition: color 0.15s ease;
+    transition: color 0.2s ease;
 }
 
 .category-directory-card:hover .card-action-trigger-link {
-    color: #000000;
+    color: var(--accent-gold);
     font-weight: 600;
 }
 
@@ -208,22 +263,28 @@
     font-size: 11px;
 }
 
-/* Footnote System Separation Rules */
+/* Separator & Footer Alignment */
 .margin-top-limit {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .base-horizontal-separator {
     border: none;
     height: 1px;
-    background-color: #E5E5E5;
-    max-width: var(--ui-max-width);
+    background-color: var(--border-color);
+    max-width: 1280px;
     margin: 0 auto;
 }
 
 .minimal-footer-system {
     padding: 32px 0;
-    background-color: #FFFFFF;
+    background-color: var(--light-bg);
+}
+
+.minimal-footer-system .ui-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
 }
 
 .base-meta-row-layout {
@@ -235,22 +296,37 @@
 .brand-identity-minimal {
     display: flex;
     align-items: center;
-    gap: 8px;
-}
-
-.minimal-footer-emblem {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
+    gap: 10px;
 }
 
 .minimal-footer-brand-text {
-    font-size: 13px;
-    font-weight: 700;
-    color: #111111;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-green);
 }
 
 .footer-copyright-text {
-    font-size: 12px;
-    color: #8A8A8A;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 968px) {
+    .top-meta-alignment-row,
+    .search-bar-wrapper .ui-container,
+    .categories-directory-block .ui-container,
+    .minimal-footer-system .ui-container {
+        padding: 0 20px;
+    }
+    .top-meta-alignment-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .grid-three-columns-fixed {
+        grid-template-columns: 1fr;
+    }
+    .browse-main-heading {
+        font-size: 2.3rem;
+    }
 }
