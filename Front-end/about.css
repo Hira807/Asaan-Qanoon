@@ -3,6 +3,264 @@
    ========================================================================== */
 
 /* Utility Layout Helper */
+
+:root {
+            --primary-dark: #0f3428;
+            --primary-green: #13382b;
+            --accent-gold: #c5a059;
+            --accent-gold-hover: #b38f48;
+            --light-bg: #fdfbf7;
+            --text-main: #111827;
+            --text-muted: #4b5563;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        header {
+            background-color: var(--primary-green);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 48px;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1.15rem;
+            letter-spacing: 0.3px;
+        }
+
+        .logo-container img, .logo-icon {
+            width: 30px;
+            height: 30px;
+            color: var(--accent-gold);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        nav a.active, nav a:hover {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .nav-btn {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent-gold-hover);
+        }
+
+        /* Main Hero Section */
+        .hero-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 80px 48px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.6rem;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #111c16;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(19, 56, 43, 0.15);
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #1a4d3c;
+        }
+
+        .btn-secondary {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-gold-hover);
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        /* Hero Card / Arch Banner */
+        .hero-card-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .arch-card {
+            background-color: var(--primary-green);
+            width: 100%;
+            max-width: 440px;
+            height: 480px;
+            border-top-left-radius: 240px;
+            border-top-right-radius: 240px;
+            border: 2px solid var(--accent-gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 48px 32px 36px 32px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 12px 32px rgba(19, 56, 43, 0.2);
+            position: relative;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.03) 10%, transparent 10%);
+            background-size: 20px 20px;
+        }
+
+        .card-top-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.65rem;
+            line-height: 1.8;
+            direction: rtl;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+
+        .translation-text {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: #e5e7eb;
+            max-width: 320px;
+        }
+
+        .card-footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .surah-tag {
+            font-size: 0.82rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .card-dots {
+            display: flex;
+            gap: 6px;
+            color: var(--accent-gold);
+            font-size: 0.65rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            header {
+                padding: 16px 20px;
+            }
+            nav {
+                display: none; /* Can add mobile hamburger toggle later */
+            }
+            .hero-section {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .hero-content p {
+                margin: 0 auto 30px auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
 .max-width-editorial {
     max-width: 760px;
     margin: 0 auto;
@@ -12,7 +270,7 @@
 /* Section 1: Hero Typography Layout */
 .about-hero-block {
     padding: 80px 0 54px 0;
-    background-color: #FFFFFF;
+    background-color: #e5e7eb;
 }
 
 .hero-statement-title {
@@ -35,7 +293,7 @@
 /* Section 2: Split Content Grid Configuration */
 .mission-split-section {
     padding: 60px 0 80px 0;
-    background-color: #FFFFFF;
+    background-color: #e5e7eb;
 }
 
 .mission-grid-layout {
@@ -49,7 +307,7 @@
     font-size: 24px;
     font-weight: 700;
     line-height: 1.3;
-    color: #111111;
+    color: #0a3a2c;
     letter-spacing: -0.4px;
     margin-top: 8px;
     margin-bottom: 20px;
@@ -80,12 +338,12 @@
     display: flex;
     align-items: flex-start;
     gap: 16px;
-    background-color: #FFFFFF;
+    background-color: #e5e7eb;
 }
 
 .value-card-icon {
     font-size: 14px;
-    color: #111111;
+    color: #0a3a2c;
     margin-top: 2px;
     width: 20px;
     text-align: center;
@@ -100,7 +358,7 @@
 .value-card-title {
     font-size: 13.5px;
     font-weight: 700;
-    color: #000000;
+    color: #0a3a2c;
 }
 
 .value-card-desc {
@@ -128,12 +386,12 @@
 .notice-icon-box {
     width: 36px;
     height: 36px;
-    background-color: #111111;
+    background-color: #0a3a2c;
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: #e5e7eb;
     font-size: 14px;
     flex-shrink: 0;
 }
@@ -155,7 +413,7 @@
 .notice-heading-text {
     font-size: 16px;
     font-weight: 700;
-    color: #000000;
+    color: #0a3a2c;
     margin-bottom: 10px;
 }
 
@@ -168,14 +426,14 @@
 /* Section 4: AI Workflow Technical Step Grid */
 .workflow-pipeline-section {
     padding: 90px 0;
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #E5E5E5;
+    background-color: #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .workflow-section-title {
     font-size: 24px;
     font-weight: 700;
-    color: #000000;
+    color: #0a3a2c;
     letter-spacing: -0.3px;
     margin-top: 6px;
     margin-bottom: 48px;
@@ -195,7 +453,7 @@
 .pipeline-num-header {
     font-size: 32px;
     font-weight: 700;
-    color: #EAEAEA;
+    color: #e5e7eb;
     line-height: 1;
     margin-bottom: 12px;
     letter-spacing: -0.5px;
@@ -203,14 +461,14 @@
 
 .pipeline-icon-wrapper {
     font-size: 14px;
-    color: #111111;
+    color: #0a3a2c;
     margin-bottom: 16px;
 }
 
 .pipeline-step-title {
     font-size: 14px;
     font-weight: 700;
-    color: #000000;
+    color: #0a3a2c;
     margin-bottom: 8px;
 }
 
@@ -229,7 +487,7 @@
 .faq-section-title {
     font-size: 24px;
     font-weight: 700;
-    color: #000000;
+    color: #0a3a2c;
     letter-spacing: -0.3px;
     margin-top: 6px;
     margin-bottom: 40px;
@@ -259,7 +517,7 @@
 .faq-row-question {
     font-size: 14px;
     font-weight: 600;
-    color: #000000;
+    color: #0a3a2c;
 }
 
 .faq-row-arrow {
@@ -292,7 +550,7 @@
 .base-horizontal-separator {
     border: none;
     height: 1px;
-    background-color: #E5E5E5;
+    background-color: #e5e7eb;
     max-width: var(--ui-max-width);
     margin: 0 auto;
 }
@@ -323,7 +581,7 @@
 .minimal-footer-brand-text {
     font-size: 13px;
     font-weight: 700;
-    color: #111111;
+    color: #0a3a2c;
 }
 
 .footer-copyright-text {
